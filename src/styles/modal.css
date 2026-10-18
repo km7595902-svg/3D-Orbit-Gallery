@@ -1,0 +1,51 @@
+.modal {
+  position: fixed; inset: 0; z-index: 30;
+  display: grid; place-items: center; padding: 12px;
+  overflow-y: auto;
+  background: rgba(3, 4, 12, 0.88);
+}
+.modal-card {
+  position: relative; margin: 0;
+  width: min(100%, 560px);
+  max-height: calc(100% - 8px); overflow-y: auto;
+  background: rgba(14, 17, 38, 0.92);
+  border: 1px solid var(--line); border-radius: 22px; padding: 14px 14px 18px;
+  box-shadow: 0 0 60px rgba(100, 90, 255, 0.35);
+  animation: pop 0.22s ease-out;
+}
+.modal-card img {
+  display: block; width: 100%; max-height: 56vh;
+  object-fit: contain; background: #05060f; border-radius: 14px;
+}
+@supports (height: 100dvh) {
+  .modal-card img { max-height: 56dvh; }
+}
+.modal-card figcaption { padding: 16px 6px 4px; }
+.pill {
+  display: inline-block; padding: 3px 12px; margin-bottom: 8px;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--blue); border: 1px solid rgba(79, 179, 255, 0.5); border-radius: 999px;
+}
+.modal-card h3 { margin: 0 0 6px; font-size: 22px; font-weight: 600; }
+.modal-card p { margin: 0; font-size: 14px; color: var(--dim); line-height: 1.6; }
+.modal-nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 16px; font-size: 12px; letter-spacing: 0.12em; color: var(--dim); }
+.modal-close {
+  position: absolute; top: 22px; right: 22px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(5, 6, 15, 0.7); border: 1px solid var(--line);
+  color: var(--ink); cursor: pointer;
+}
+@keyframes pop { from { transform: scale(0.85); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .modal-card { animation: none; } }
+
+@media (max-width: 600px) {
+  .modal-card { border-radius: 18px; padding: 10px 10px 14px; }
+  .modal-card img { max-height: 46vh; }
+  .modal-card h3 { font-size: 19px; }
+}
+@media (max-width: 600px) {
+  @supports (height: 100dvh) { .modal-card img { max-height: 46dvh; } }
+}
+@media (max-height: 520px) {
+  .modal-card img { max-height: 40vh; }
+}
